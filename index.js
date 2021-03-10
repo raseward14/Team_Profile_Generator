@@ -1,8 +1,8 @@
 // require dependencies
-const Roster = require('./lib/Employee')
+const Employee = require('./lib/Employee')
 
 // Initialize a new team
-const roster = new Roster();
+const employee = new Employee();
 
 // Begin roster
-roster.getName();
+employee.getName();
