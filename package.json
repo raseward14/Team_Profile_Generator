@@ -1,5 +1,5 @@
 {
-  "name": "Team_Profile_Generator",
+  "name": "team_profile_generator",
   "version": "1.0.0",
   "description": "Node.js command-line application that takes information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person.",
   "main": "index.js",
