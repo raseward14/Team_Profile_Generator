@@ -1,0 +1,21 @@
+h1 {
+    background-color: red;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+}
+
+div.project-row {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+div.portfolio-container {
+    display: flex;
+    padding: 0px 15px 0px 15px;
+    justify-self: start;
+    width: 100%;
+}

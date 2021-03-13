@@ -7,6 +7,9 @@ const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const generate = require('./generateHTML');
+const generateHTML = require('./generateHTML');
+
 // create a roster- empty array with each new employee object pushed to the roster array
 const roster = [];
 
@@ -16,16 +19,13 @@ function newTeamMember() {
         .prompt([
             {
                 type: 'list',
-                name: 'team-members',
+                name: 'teamMembers',
                 message: 'Which type of team member would you like to add?',
-                choices: ['Manager', 'Engineer', 'Intern', 'I dont want to add any more team members']
+                choices: ['Engineer', 'Intern', 'I dont want to add any more team members']
             }
         ])
-        .then(function (response) {
-            switch (response) {
-                case 'Manager':
-                    newManager();
-                    break;
+        .then((response) => {
+            switch (response.teamMembers) {
                 case 'Engineer':
                     newEngineer();
                     break;
@@ -33,10 +33,11 @@ function newTeamMember() {
                     newIntern();
                     break;
                 default:
+                    writeHTML(roster);
                     break;
             }
-        })
-}
+        });
+};
 
 // create new manager
 function newManager() {
@@ -67,8 +68,8 @@ function newManager() {
             const manager = new Manager(response.name, response.id, response.email, response.officeNumber);
             roster.push(manager);
             newTeamMember();
-        })
-}
+        });
+};
 
 // create new engineer
 function newEngineer() {
@@ -100,7 +101,7 @@ function newEngineer() {
             roster.push(engineer);
             newTeamMember();
         });
-}
+};
 
 // create new intern
 function newIntern() {
@@ -132,12 +133,14 @@ function newIntern() {
             roster.push(intern);
             newTeamMember();
         });
-}
+};
 
 // write the file
-const writeHTML = () => {
-    fs.writeFileSync('output.html', render(roster));
-}
+const writeHTML = (roster) => {
+    console.log(roster);
+    // write file here
+    fs.writeFileSync('index.html', generateHTML(roster));
+};
 
 // initialize the team
 newManager();
