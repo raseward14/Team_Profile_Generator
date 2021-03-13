@@ -1,4 +1,5 @@
 // require dependencies
+const Employee = require('./lib/Employee');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
@@ -20,8 +21,8 @@ function newTeamMember() {
                 choices: ['Manager', 'Engineer', 'Intern', 'I dont want to add any more team members']
             }
         ])
-        .then(function (choice) {
-            switch (inquirer.prompt.choices) {
+        .then(function (response) {
+            switch (response) {
                 case 'Manager':
                     newManager();
                     break;
@@ -58,11 +59,15 @@ function newManager() {
             },
             {
                 type: 'input',
-                name: 'office-number',
+                name: 'officeNumber',
                 message: 'What is the team managers office number?',
             },
         ])
-        .then(newTeamMember());
+        .then((response) => {
+            const manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+            roster.push(manager);
+            newTeamMember();
+        })
 }
 
 // create new engineer
@@ -86,11 +91,15 @@ function newEngineer() {
             },
             {
                 type: 'input',
-                name: 'office-number',
+                name: 'github',
                 message: 'What is your engineers GitHub username?',
             },
         ])
-        .then(newTeamMember());
+        .then((response) => {
+            const engineer = new Engineer(response.name, response.id, response.email, response.github);
+            roster.push(engineer);
+            newTeamMember();
+        });
 }
 
 // create new intern
@@ -114,17 +123,21 @@ function newIntern() {
             },
             {
                 type: 'input',
-                name: 'office-number',
+                name: 'school',
                 message: 'What is your interns school?',
             },
         ])
-        .then(newTeamMember());
+        .then((response) => {
+            const intern = new Intern(response.name, response.id, response.email, response.school);
+            roster.push(intern);
+            newTeamMember();
+        });
 }
 
-// Initialize a new employee
-const employee = new Employee();
+// write the file
+const writeHTML = () => {
+    fs.writeFileSync('output.html', render(roster));
+}
 
-roster.push(employee);
-
-// Begin roster
-employee.getName();
+// initialize the team
+newManager();

@@ -1,27 +1,28 @@
-const Letter = require("../lib/Engineer");
+const Engineer = require("../lib/Engineer");
 
-describe("Engineer class", () => {
-  it("Characters that aren't digits or letters are instantly visible", () => {
-    expect(new Letter("?").visible).toBe(true);
-  });
+describe("Engineer", () => {
+  describe('Initialization', () => {
+    // it is what i expect it to do
+    it("should return an object containing a 'name' property, 'id' property, and an 'email' property when called with the 'new' keyword", () => {
+      const obj = new Engineer();
 
-  it("toString returns _ for letters", () => {
-    expect(new Letter("a").toString()).toBe("_");
-  });
-
-  describe("guess", () => {
-    it("Correct guess returns true", () => {
-      expect(new Letter("j").guess("j")).toBe(true);
-    });
-
-    it("Incorrect guess returns false", () => {
-      expect(new Letter("j").guess("l")).toBe(false);
+      // what should happen
+      expect('name' in obj).toEqual(true);
+      expect('id' in obj).toEqual(true);
+      expect('email' in obj).toEqual(true);
     });
   });
 
-  describe("getSolution", () => {
-    it("returns character", () => {
-      expect(new Letter("l").getSolution()).toBe("l");
+  describe('getGithub', () => {
+    // it is what i expect it to do
+    it("should return an engineer object with 'name' 'id' 'email' and 'github' values.", () => {
+      const { employee } = new Engineer('Richard', 2, 'raseward14@gmail.com', 'raseward14');
+
+      // what should happen
+      expect('name' in employee).toBe('Richard');
+      expect('id' in employee).toBe(1);
+      expect('email' in employee).toBe('raseward14@gmail.com');
+      expect('github' in employee).toBe('raseward14');
     });
   });
 });
