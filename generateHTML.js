@@ -13,13 +13,13 @@ const generateHTML = (roster) => {
         manager.getRole();
         // bootstrap card- template literal- push to array
         return `<div class="card text-white bg-dark mb-3" style="min-width: 18rem;">
-  <div class="card-header">${manager.getName()}<br>${manager.getRole()}</div>
+  <div class="card-header">${manager.getName()}<br><i class="fas fa-mug-hot"></i> ${manager.getRole()}</div>
   <div class="card-body">
   <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${manager.getId()}</li>
-    <li class="list-group-item">${manager.getEmail()}</li>
-    <li class="list-group-item">${manager.getOfficeNumber()}</li>
+    <li class="list-group-item">ID: ${manager.getId()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}" target="null">${manager.getEmail()}</a></li>
+    <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
   </ul>
 </div>
   </div>
@@ -36,13 +36,13 @@ const generateHTML = (roster) => {
         // bootstrap card- template literal- push to array
         return `
         <div class="card bg-light mb-3" style="min-width: 18rem;">
-  <div class="card-header">${intern.getName()}<br>${intern.getRole()}</div>
+  <div class="card-header">${intern.getName()}<br><i class="fas fa-user-graduate"></i> ${intern.getRole()}</div>
   <div class="card-body">
   <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${intern.getId()}</li>
-    <li class="list-group-item">${intern.getEmail()}</li>
-    <li class="list-group-item">${intern.getSchool()}</li>
+    <li class="list-group-item">ID: ${intern.getId()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}" target="null">${intern.getEmail()}</a></li>
+    <li class="list-group-item">School: ${intern.getSchool()}</li>
   </ul>
 </div>
   </div>
@@ -59,13 +59,13 @@ const generateHTML = (roster) => {
         // bootstrap card- temlate literal- push to array
         return `
         <div class="card text-white bg-info mb-3" style="min-width: 18rem;">
-  <div class="card-header">${engineer.getName()}<br>${engineer.getRole()}</div>
+  <div class="card-header">${engineer.getName()}<br><i class="fas fa-glasses"></i> ${engineer.getRole()}</div>
   <div class="card-body">
   <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">${engineer.getId()}</li>
-    <li class="list-group-item">${engineer.getEmail()}</li>
-    <li class="list-group-item">${engineer.getGithub()}</li>
+    <li class="list-group-item">ID: ${engineer.getId()}</li>
+    <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}" target="null">${engineer.getEmail()}</a></li>
+    <li class="list-group-item">Github: ${engineer.getGithub()}</li>
   </ul>
 </div>
   </div>
@@ -102,6 +102,10 @@ module.exports = roster => {
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+        <!--fontawesome link-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 
         <!-- my stylesheet -->
         <link rel="stylesheet" href="src/css/style.css">

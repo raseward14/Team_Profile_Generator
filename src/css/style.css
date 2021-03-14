@@ -1,5 +1,5 @@
 header {
-    background-color: red;
+    background-color: rgb(182, 43, 43);
 }
 
 h1 {
@@ -23,8 +23,7 @@ div.card-body {
 
 div.card-header {
     font-size: 22px;
-    font-weight: 500px;
-    
+    font-weight: bold;
 }
 
 div.project-row {
