@@ -142,7 +142,7 @@ function newIntern() {
 // write the file
 const writeHTML = (roster) => {
     // write file here
-    fs.writeFileSync('index.html', generateHTML(roster));
+    fs.writeFileSync('sample.html', generateHTML(roster));
 };
 
 // initialize the team
