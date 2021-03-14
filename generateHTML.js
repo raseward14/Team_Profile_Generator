@@ -12,10 +12,10 @@ const generateHTML = (roster) => {
         manager.getOfficeNumber();
         manager.getRole();
         // bootstrap card- template literal- push to array
-        return `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">${manager.getName()}</div>
+        return `<div class="card text-white bg-dark mb-3" style="min-width: 18rem;">
+  <div class="card-header">${manager.getName()}<br>${manager.getRole()}</div>
   <div class="card-body">
-  <div class="card">
+  <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${manager.getId()}</li>
     <li class="list-group-item">${manager.getEmail()}</li>
@@ -35,10 +35,10 @@ const generateHTML = (roster) => {
         intern.getRole();
         // bootstrap card- template literal- push to array
         return `
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">${intern.getName()}</div>
+        <div class="card bg-light mb-3" style="min-width: 18rem;">
+  <div class="card-header">${intern.getName()}<br>${intern.getRole()}</div>
   <div class="card-body">
-  <div class="card">
+  <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${intern.getId()}</li>
     <li class="list-group-item">${intern.getEmail()}</li>
@@ -58,10 +58,10 @@ const generateHTML = (roster) => {
         engineer.getRole();
         // bootstrap card- temlate literal- push to array
         return `
-        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">${engineer.getName()}</div>
+        <div class="card text-white bg-info mb-3" style="min-width: 18rem;">
+  <div class="card-header">${engineer.getName()}<br>${engineer.getRole()}</div>
   <div class="card-body">
-  <div class="card">
+  <div class="card" style='min-width: 16rem;'>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">${engineer.getId()}</li>
     <li class="list-group-item">${engineer.getEmail()}</li>
@@ -80,13 +80,13 @@ const cardArray = [];
 // filter to get mgr, intern, engineer to push cards to this array
 cardArray.push(roster
   .filter(item => item.getRole() === 'Manager')
-  .map(newManager => createManager(newManager)));
+  .map(newManager => createManager(newManager)).join(''));
 cardArray.push(roster
   .filter(item => item.getRole() === 'Intern')
-  .map(newIntern => createIntern(newIntern)));
+  .map(newIntern => createIntern(newIntern)).join(''));
 cardArray.push(roster
   .filter(item => item.getRole() === 'Engineer')
-  .map(newEngineer => createEngineer(newEngineer)));
+  .map(newEngineer => createEngineer(newEngineer)).join(''));
 
 // .join('')
 return cardArray.join('');
@@ -109,7 +109,7 @@ module.exports = roster => {
         <title>Team Profile Generator!</title>
     </head>
     <body>
-    <h1>My Team</h1>
+    <header><h1>My Team</h1></header> 
     <div class='container'>
         <div class="portfolio-container">
             <div class="project-row">

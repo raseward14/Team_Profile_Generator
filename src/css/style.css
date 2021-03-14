@@ -1,19 +1,30 @@
-
+header {
+    background-color: red;
+}
 
 h1 {
-    background-color: red;
     font-size: 50px;
     text-align: center;
     color: white;
-    height: 20vh;
-    align-self: center;
     vertical-align: middle;
     padding: 100px;
+}
+
+div.card.mb-3 {
+    border-radius: 5px;
+    box-shadow: inset 5px 5px 8px rgba(0,0,0,0.5),
+    10px 10px 20px 5px rgba(0,0,0,0.5);
 }
 
 div.card-body {
     width: fit-content;
     block-size: fit-content;
+}
+
+div.card-header {
+    font-size: 22px;
+    font-weight: 500px;
+    
 }
 
 div.project-row {
