@@ -79,13 +79,13 @@ const cardArray = [];
 
 // filter to get mgr, intern, engineer to push cards to this array
 cardArray.push(roster
-  .filter(employee => employee.getRole() === 'Manager')
+  .filter(item => item.getRole() === 'Manager')
   .map(newManager => createManager(newManager)));
 cardArray.push(roster
-  .filter(employee => employee.getRole() === 'Intern')
+  .filter(item => item.getRole() === 'Intern')
   .map(newIntern => createIntern(newIntern)));
 cardArray.push(roster
-  .filter(employee => employee.getRole() === 'Engineer')
+  .filter(item => item.getRole() === 'Engineer')
   .map(newEngineer => createEngineer(newEngineer)));
 
 // .join('')
@@ -109,8 +109,8 @@ module.exports = roster => {
         <title>Team Profile Generator!</title>
     </head>
     <body>
+    <h1>My Team</h1>
     <div class='container'>
-        <h1>My Team</h1>
         <div class="portfolio-container">
             <div class="project-row">
             ${generateHTML(roster)}
