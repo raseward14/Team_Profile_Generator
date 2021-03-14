@@ -1,28 +1,30 @@
 const Manager = require("../lib/Manager");
 
-describe("Manager", () => {
-  describe('Initialization', () => {
-    // it is what i expect it to do
-    it("should return an object containing a 'name' property, 'id' property, and an 'email' property when called with the 'new' keyword", () => {
-      const obj = new Manager();
-
-      // what should happen
-      expect('name' in obj).toEqual(true);
-      expect('id' in obj).toEqual(true);
-      expect('email' in obj).toEqual(true);
-    });
+describe('Manager', () => {
+  // it is what i expect it to do
+  it("instantiates new manager instance", () => {
+    const manager = new Manager();
+    // what should happen
+    expect(typeof(manager)).toBe('object');
   });
+  it("constructor takes in a name, id, email and officeNumber", () => {
+    const name = 'Dan';
+    const id = 10;
+    const email = 'dantheman@icloud.com';
+    const officeNumber = '1072'
+    const manager = new Manager(name, id, email, officeNumber);
 
-  describe('officeNumber', () => {
-    // it is what i expect it to do
-    it("should return a manager object with 'name' 'id' 'email' and 'officeNumber' values.", () => {
-      const { employee } = new Manager('Richard', 2, 'raseward14@gmail.com', 226);
+    expect(manager.name).toBe(name);
+    expect(manager.id).toBe(id);
+    expect(manager.email).toBe(email);
+    expect(manager.officeNumber).toBe(officeNumber);
+  });
+  it("receives officeNUmber, role via methods", () => {
+    const officeNumber = '2020';
+    const role = 'Manager'
+    const manager = new Manager('Dan', 10, 'dantheman@gmail.com', officeNumber);
 
-      // what should happen
-      expect('name' in employee).toBe('Richard');
-      expect('id' in employee).toBe(1);
-      expect('email' in employee).toBe('raseward14@gmail.com');
-      expect('officeNumber' in employee).toBe(226);
-    });
+    expect(manager.getOfficeNumber()).toBe(officeNumber);
+    expect(manager.getRole()).toBe(role);
   });
 });

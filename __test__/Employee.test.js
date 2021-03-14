@@ -1,29 +1,39 @@
 const Employee = require("../lib/Employee");
 
 describe('Employee', () => {
-  describe('Initialization', () => {
-    // it is what i expect it to do
-    it("should return an object containing a 'name' property, 'id' property, and an 'email' property when called with the 'new' keyword", () => {
-      const obj = new Employee();
-
-      // what should happen
-      expect('name' in obj).toEqual(true);
-      expect('id' in obj).toEqual(true);
-      expect('email' in obj).toEqual(true);
-    });
+  // it is what i expect it to do
+  it("instantiates new employee instance", () => {
+    const obj = new Employee();
+    // what should happen
+    expect(typeof(obj)).toBe('object');
   });
-  it("should return an employee object with 'name' 'id' and 'email' values.", () => {
-    const { employee } = new Employee('Richard', 2, 'raseward14@gmail.com');
+  it("constructor takes in a name, id, and email", () => {
+    const name = 'Richard';
+    const id = 2;
+    const email = 'raseward@gmail.com';
+    const employee = new Employee(name, id, email);
 
-    expect('name' in employee).toBe('Richard');
-    expect('id' in employee).toBe(1);
-    expect('email' in employee).toBe('raseward14@gmail.com');
+    expect(employee.name).toBe(name);
+    expect(employee.id).toBe(id);
+    expect(employee.email).toBe(email);
+  });
+  it("receives name, id, email, role via methods", () => {
+    const name = 'JSON';
+    const id = 4;
+    const email = 'JSON2021@yahoo.com';
+    const role = 'Employee'
+    const employee = new Employee(name, id, email);
+
+    expect(employee.getName()).toBe(name);
+    expect(employee.getId()).toBe(id);
+    expect(employee.getEmail()).toBe(email);
+    expect(employee.getRole()).toBe(role);
   });
 });
 
-  
 
-  
 
-    
+
+
+
 

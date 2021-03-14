@@ -141,7 +141,6 @@ function newIntern() {
 
 // write the file
 const writeHTML = (roster) => {
-    console.log(roster);
     // write file here
     fs.writeFileSync('index.html', generateHTML(roster));
 };

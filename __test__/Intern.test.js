@@ -1,28 +1,30 @@
 const Intern = require("../lib/Intern");
 
-describe("Intern", () => {
-  describe('Initialization', () => {
-    // it is what i expect it to do
-    it("should return an object containing a 'name' property, 'id' property, and an 'email' property when called with the 'new' keyword", () => {
-      const obj = new Intern();
-
-      // what should happen
-      expect('name' in obj).toEqual(true);
-      expect('id' in obj).toEqual(true);
-      expect('email' in obj).toEqual(true);
-    });
+describe('Intern', () => {
+  // it is what i expect it to do
+  it("instantiates new intern instance", () => {
+    const intern = new Intern();
+    // what should happen
+    expect(typeof(intern)).toBe('object');
   });
+  it("constructor takes in a name, id, email and school", () => {
+    const name = 'Allana';
+    const id = 24;
+    const email = 'allana24K@icloud.com';
+    const school = 'DU'
+    const intern = new Intern(name, id, email, school);
 
-  describe('getSchool', () => {
-    // it is what i expect it to do
-    it("should return an intern object with 'name' 'id' 'email' and 'school' values.", () => {
-      const { employee } = new Intern('Richard', 2, 'raseward14@gmail.com', 'DU');
+    expect(intern.name).toBe(name);
+    expect(intern.id).toBe(id);
+    expect(intern.email).toBe(email);
+    expect(intern.school).toBe(school);
+  });
+  it("receives school, role via methods", () => {
+    const school = 'University of Denver';
+    const role = 'Intern'
+    const intern = new Intern('Nikki', 15, 'nikki1000@icloud.com', school);
 
-      // what should happen
-      expect('name' in employee).toBe('Richard');
-      expect('id' in employee).toBe(1);
-      expect('email' in employee).toBe('raseward14@gmail.com');
-      expect('school' in employee).toBe('DU');
-    });
+    expect(intern.getSchool()).toBe(school);
+    expect(intern.getRole()).toBe(role);
   });
 });
