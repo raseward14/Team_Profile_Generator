@@ -4,7 +4,7 @@
 ## Description
 Node.js command-line application that takes information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. Click the link below for a video walkthrough.
 
-**[Check out the video here!]()**
+**[Check out the video here!](https://drive.google.com/file/d/1rM6YT2DF8qofT7VaRBkXlUgak32Pdjg3/view)**
 
 Test driven development is utilized. A passing unit test is included for every part of the code. This application utilizes nmp's jest and inquirer packages. Invoke the application by running the command node index.js in the command line.
 
