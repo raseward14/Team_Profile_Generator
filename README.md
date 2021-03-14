@@ -1,6 +1,3 @@
-
-email validator https://www.youtube.com/watch?v=V-qHDWxUT18
-
 # Team_Profile_Generator
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
