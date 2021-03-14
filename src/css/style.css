@@ -1,8 +1,19 @@
+
+
 h1 {
     background-color: red;
-    font-size: 20px;
+    font-size: 50px;
     text-align: center;
     color: white;
+    height: 20vh;
+    align-self: center;
+    vertical-align: middle;
+    padding: 100px;
+}
+
+div.card-body {
+    width: fit-content;
+    block-size: fit-content;
 }
 
 div.project-row {
@@ -10,12 +21,16 @@ div.project-row {
     flex-wrap: wrap;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 40px;
 }
 
 div.portfolio-container {
     display: flex;
-    padding: 0px 15px 0px 15px;
+    padding: 60px 15px 0px 15px;
     justify-self: start;
     width: 100%;
+}
+
+ul {
+    color: black;
 }

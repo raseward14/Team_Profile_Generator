@@ -7,7 +7,6 @@ const Engineer = require('./lib/Engineer');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generate = require('./generateHTML');
 const generateHTML = require('./generateHTML');
 
 // create a roster- empty array with each new employee object pushed to the roster array
@@ -21,7 +20,12 @@ function newTeamMember() {
                 type: 'list',
                 name: 'teamMembers',
                 message: 'Which type of team member would you like to add?',
-                choices: ['Engineer', 'Intern', 'I dont want to add any more team members']
+                choices: [
+                'Engineer', 
+                new inquirer.Separator(),
+                'Intern', 
+                new inquirer.Separator(),
+                'I dont want to add any more team members']
             }
         ])
         .then((response) => {

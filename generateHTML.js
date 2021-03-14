@@ -1,3 +1,7 @@
+const Employee = require('./lib/Employee')
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 const generateHTML = (roster) => {
     // build manager card
@@ -8,12 +12,16 @@ const generateHTML = (roster) => {
         manager.getOfficeNumber();
         manager.getRole();
         // bootstrap card- template literal- push to array
-        `
-        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        return `<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
   <div class="card-header">${manager.getName()}</div>
   <div class="card-body">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${manager.getId()}</li>
+    <li class="list-group-item">${manager.getEmail()}</li>
+    <li class="list-group-item">${manager.getOfficeNumber()}</li>
+  </ul>
+</div>
   </div>
 </div>
         `
@@ -26,12 +34,17 @@ const generateHTML = (roster) => {
         intern.getSchool();
         intern.getRole();
         // bootstrap card- template literal- push to array
-        `
+        return `
         <div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
+  <div class="card-header">${intern.getName()}</div>
   <div class="card-body">
-    <h5 class="card-title">Light card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${intern.getId()}</li>
+    <li class="list-group-item">${intern.getEmail()}</li>
+    <li class="list-group-item">${intern.getSchool()}</li>
+  </ul>
+</div>
   </div>
 </div>
         `
@@ -44,32 +57,43 @@ const generateHTML = (roster) => {
         engineer.getGithub();
         engineer.getRole();
         // bootstrap card- temlate literal- push to array
-        `
+        return `
         <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
+  <div class="card-header">${engineer.getName()}</div>
   <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">${engineer.getId()}</li>
+    <li class="list-group-item">${engineer.getEmail()}</li>
+    <li class="list-group-item">${engineer.getGithub()}</li>
+  </ul>
+</div>
   </div>
 </div>
         `
-    }
+}
 
 // filter out diff roles
 // .map calls the three functions above
-cardArray = [];
+const cardArray = [];
 
 // filter to get mgr, intern, engineer to push cards to this array
-cardArray.push(roster.filter(employee => Employee.getRole() === 'Manager').map(newManager => createManager(newManager).join('')));
-cardArray.push(roster.filter(employee => Employee.getRole() === 'Intern').map(newIntern => createIntern(newIntern).join('')));
-cardArray.push(roster.filter(employee => Employee.getRole() === 'Engineer').map(newEngineer => createEngineer(newEngineer).join('')));
+cardArray.push(roster
+  .filter(employee => employee.getRole() === 'Manager')
+  .map(newManager => createManager(newManager)));
+cardArray.push(roster
+  .filter(employee => employee.getRole() === 'Intern')
+  .map(newIntern => createIntern(newIntern)));
+cardArray.push(roster
+  .filter(employee => employee.getRole() === 'Engineer')
+  .map(newEngineer => createEngineer(newEngineer)));
 
 // .join('')
 return cardArray.join('');
 }
 
 module.exports = roster => {
-    `<!doctype html>
+    return `<!doctype html>
     <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -85,13 +109,14 @@ module.exports = roster => {
         <title>Team Profile Generator!</title>
     </head>
     <body>
+    <div class='container'>
         <h1>My Team</h1>
         <div class="portfolio-container">
             <div class="project-row">
             ${generateHTML(roster)}
             </div>
         </div>
-
+    </div>
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
